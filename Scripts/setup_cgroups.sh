@@ -10,15 +10,21 @@ if [[ ! -f "$FILE" ]]; then
     echo "cgroup_enable=memory cgroup_memory=1" | sudo tee "$FILE" > /dev/null
 else
     echo "File $FILE exists. Updating it."
-    # Append the parameters if they are not already present
-    if ! grep -q "cgroup_enable=memory" "$FILE"; then
-        echo -n " " >> "$FILE"
-        echo "cgroup_enable=memory" | sudo tee -a "$FILE" > /dev/null
+    
+    # Read current content
+    CURRENT_CONTENT=$(cat "$FILE")
+
+    # Check if parameters are already present
+    if [[ "$CURRENT_CONTENT" != *"cgroup_enable=memory"* ]]; then
+        CURRENT_CONTENT="$CURRENT_CONTENT cgroup_enable=memory"
     fi
-    if ! grep -q "cgroup_memory=1" "$FILE"; then
-        echo -n " " >> "$FILE"
-        echo "cgroup_memory=1" | sudo tee -a "$FILE" > /dev/null
+    if [[ "$CURRENT_CONTENT" != *"cgroup_memory=1"* ]]; then
+        CURRENT_CONTENT="$CURRENT_CONTENT cgroup_memory=1"
     fi
+
+    # Write updated content back to the file
+    echo "$CURRENT_CONTENT" | sudo tee "$FILE" > /dev/null
+
 fi
 
 echo "Setup complete."
