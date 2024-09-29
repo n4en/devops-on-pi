@@ -4,7 +4,7 @@ A lightweight DevOps platform for home servers using Raspberry Pi and Kubernetes
 ## Prerequisites
 - **Raspberry Pi OS**: Ensure that you have Raspberry Pi OS installed on your Raspberry Pi. You can download the latest version from the official Raspberry Pi website.
 
-## Steps
+## Setup 
 1. To keep your system up to date, you can use the following commands:
     
     ```bash 
@@ -14,4 +14,15 @@ A lightweight DevOps platform for home servers using Raspberry Pi and Kubernetes
     ```bash 
     chmod +x Scripts/setup_cgroups.sh
     sudo ./Scripts/setup_cgroups.sh
+    ```
+3. Install K3s
+   ```bash
+   curl -sfL https://get.k3s.io | sh -
+   ```
+
+## Gotchas
+#### Failed to find memory cgroup, you may need to add "cgroup_memory=1 cgroup_enable=memory" to your linux cmdline
+- **Fix**:
+    ```bash
+    sudo reboot
     ```
