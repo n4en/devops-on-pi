@@ -8,7 +8,7 @@ A lightweight DevOps platform for home servers using Raspberry Pi and Kubernetes
 1. To keep your system up to date, use the following commands:
     
     ```bash 
-    sudo apt update && sudo apt upgrade
+    sudo apt update && sudo apt upgrade && sudo apt install git-all
     ```
 
 2. Configure cgroups:
