@@ -61,6 +61,36 @@ A lightweight DevOps platform for home servers using Raspberry Pi and Kubernetes
     argocd repo add https://charts.bitnami.com/bitnami --type helm --name bitnami
     ```
 
+## Tools
+
+- Install Zsh
+   ```bash 
+   sudo apt install zsh -y
+   ```
+
+- ohmyzsh 
+   ```bash 
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   ```
+
+- zsh-autosuggestions 
+   ```bash 
+   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+   ```
+
+- zsh-syntax-highlighting 
+   ```bash 
+   git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+   ```
+
+
+- zsh-completions 
+   ```bash 
+   git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+   ```
+
+
+
 ## Gotchas
 #### Failed to find memory cgroup: You may need to add "cgroup_memory=1 cgroup_enable=memory" to your Linux command line.
 - **Fix**:
