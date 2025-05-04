@@ -97,3 +97,26 @@ A lightweight DevOps platform for home servers using Raspberry Pi and Kubernetes
     ```bash
     sudo reboot
     ```
+- Enable Traefik Dashboard
+    ```yaml
+    apiVersion: traefik.io/v1alpha1
+    kind: IngressRoute
+    metadata:
+      name: traefik-dashboard
+      namespace: kube-system
+    spec:
+      entryPoints:
+        - web
+      routes:
+        - match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+          kind: Rule
+          services:
+            - name: api@internal
+              kind: TraefikService
+    ```
+
+    ```bash
+    curl http://<<PI IP address>>:8080/dashboard/
+
+    ```
+  
